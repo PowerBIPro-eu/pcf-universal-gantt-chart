@@ -38,7 +38,6 @@ export const createTaskListLocal = (
                 }}
             >
                 {tasks.map((t) => {
-                    console.log(t.flagOption, t);
                     let expanderSymbol = "";
                     if (t.hideChildren === false) {
                         expanderSymbol = "▼";
@@ -111,7 +110,28 @@ export const createTaskListLocal = (
                                 }}
                                 title={formatDateShort(t.start, includeTime)}
                             >
-                                &nbsp;{formatDateShort(t.start, includeTime)}
+                                {t.errorFlag &&
+                                (t.errorFlag === 717170002 ||
+                                    t.errorFlag === 717170003) ? (
+                                    <Tag
+                                        style={{
+                                            backgroundColor: "#E81123",
+                                            color: "white",
+                                        }}
+                                        icon={
+                                            <WarningFilled
+                                                style={{ color: "white" }}
+                                            />
+                                        }
+                                    >
+                                        {formatDateShort(t.end, includeTime)}
+                                    </Tag>
+                                ) : (
+                                    <>
+                                        &nbsp;
+                                        {formatDateShort(t.end, includeTime)}
+                                    </>
+                                )}
                             </div>
                             {/**
                              * End Time
@@ -124,7 +144,14 @@ export const createTaskListLocal = (
                                 }}
                                 title={formatDateShort(t.end, includeTime)}
                             >
-                                {t.flagOption === 295380001 ? (
+                                {t.statusOption === 717170000
+                                    ? "🔴"
+                                    : t.statusOption === 717170001
+                                    ? "🟠"
+                                    : "🟢"}
+                                {t.errorFlag &&
+                                (t.errorFlag === 717170001 ||
+                                    t.errorFlag === 717170003) ? (
                                     <Tag
                                         style={{
                                             backgroundColor: "#E81123",
@@ -136,7 +163,6 @@ export const createTaskListLocal = (
                                             />
                                         }
                                     >
-                                        &nbsp;
                                         {formatDateShort(t.end, includeTime)}
                                     </Tag>
                                 ) : (
@@ -153,3 +179,20 @@ export const createTaskListLocal = (
         );
     };
 };
+
+// (
+//     <Tag
+//         style={{
+//             backgroundColor: "#E81123",
+//             color: "white",
+//         }}
+//         icon={
+//             <WarningFilled
+//                 style={{ color: "white" }}
+//             />
+//         }
+//     >
+//         &nbsp;
+//         {formatDateShort(t.end, includeTime)}
+//     </Tag>
+// )

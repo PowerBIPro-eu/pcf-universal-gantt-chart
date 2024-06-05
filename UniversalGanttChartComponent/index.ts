@@ -19,7 +19,8 @@ export class UniversalGanttChartComponent
     private _scheduledEndStr = "endTime";
     private _progressStr = "progress";
     private _taskTypeOption = "taskTypeOption";
-    private _flagOption = "flagOption";
+    private _statusOption = "statusOption";
+    private _errorFlag = "errorFlag";
     private _parentRecordStr = "parentRecord";
     private _displayColorText = "displayColorText";
     private _displayColorOption = "displayColorOption";
@@ -208,7 +209,8 @@ export class UniversalGanttChartComponent
             const parentRecord = <ComponentFramework.EntityReference>(
                 record.getValue(this._parentRecordStr)
             );
-            const flag = Number(record.getValue(this._flagOption));
+            const statusOption = Number(record.getValue(this._statusOption));
+            const errorFlag = Number(record.getValue(this._errorFlag));
             const progress = isProgressing
                 ? Number(record.getValue(this._progressStr))
                 : 0;
@@ -258,7 +260,8 @@ export class UniversalGanttChartComponent
                     ),
                     progress: progress,
                     type: taskType,
-                    flagOption: flag,
+                    statusOption: statusOption,
+                    errorFlag: errorFlag,
                     isDisabled: isDisabled,
                     styles: { ...entityColorTheme },
                 };

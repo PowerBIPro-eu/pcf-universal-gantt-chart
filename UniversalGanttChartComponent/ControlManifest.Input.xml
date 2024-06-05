@@ -32,7 +32,11 @@
         description-key="Specifies record type. Task, milestone, project. You are able to configure option-text mapping in Task Type Mapping parameter." of-type="OptionSet" 
         usage="input" required="false" 
       />
-      <property-set name="flagOption" display-name-key="Flag(Option)" 
+      <property-set name="statusOption" display-name-key="Status(Option)" 
+        description-key="Flag to utilize in component code" of-type="OptionSet" 
+        usage="input" required="false" 
+      />
+      <property-set name="errorFlag" display-name-key="ErrorFlag(Option)" 
         description-key="Flag to utilize in component code" of-type="OptionSet" 
         usage="input" required="false" 
       />
