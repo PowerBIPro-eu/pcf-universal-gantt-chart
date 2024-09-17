@@ -1,6 +1,15 @@
 {
     "extends": "./node_modules/pcf-scripts/tsconfig_base.json",
     "compilerOptions": {
-        "typeRoots": ["node_modules/@types"],
-    }
+        "typeRoots": ["node_modules/@types", "./libs/Typings/*.ts"],
+        "experimentalDecorators": true,
+        "noImplicitAny": false,
+        "strictNullChecks": false,
+        "allowJs": true,
+        "jsx": "react",
+        "module": "ES6",
+        "target": "ES6",
+        "moduleResolution": "node"
+    },
+    "include": ["UniversalGanttChartComponent", "global.d.ts"]
 }

@@ -2,6 +2,7 @@ import * as React from "react";
 import { Task } from "gantt-task-react";
 import { Tag } from "@fluentui/react-tags";
 import { WarningFilled } from "@fluentui/react-icons/lib/icons/chunk-4";
+import { CheckmarkCircle20Filled, CircleHalfFill20Regular, Circle20Regular } from "@fluentui/react-icons";
 
 export const createTaskListLocal = (
     includeTime: boolean,
@@ -144,11 +145,6 @@ export const createTaskListLocal = (
                                 }}
                                 title={formatDateShort(t.end, includeTime)}
                             >
-                                {t.statusOption === 717170000
-                                    ? "🔴"
-                                    : t.statusOption === 717170001
-                                    ? "🟠"
-                                    : "🟢"}
                                 {t.errorFlag &&
                                 (t.errorFlag === 717170001 ||
                                     t.errorFlag === 717170003) ? (
@@ -171,6 +167,25 @@ export const createTaskListLocal = (
                                         {formatDateShort(t.end, includeTime)}
                                     </>
                                 )}
+                            </div>
+                            {/* Progress Status */}
+                            <div
+                                className="Gantt-Task-List_Cell"
+                                style={{
+                                    minWidth: "125px",
+                                    maxWidth: "125px",
+                                }}
+                                title={t.statusOption === 717170000
+                                    ? "Not Started"
+                                    : t.statusOption === 717170001
+                                    ? "In Progress"
+                                    : "Done"}
+                            >
+                                {t.statusOption === 717170000
+                                    ? <><Circle20Regular color="#0f6cbd"/> <span>&nbsp;Not Started</span></>
+                                    : t.statusOption === 717170001
+                                    ? <><CircleHalfFill20Regular color="#0f6cbd" /> <span>&nbsp;In Progress</span></>
+                                    : <><CheckmarkCircle20Filled color="#0f6cbd" /> <span>&nbsp;Done</span></>}
                             </div>
                         </div>
                     );

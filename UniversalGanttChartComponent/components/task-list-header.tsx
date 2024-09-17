@@ -71,6 +71,21 @@ export const createHeaderLocal = (
           >
             &nbsp;{endDisplayName}
           </div>
+          <div
+            className="Gantt-Table_Header-Separator"
+            style={{
+              height: headerHeight * 0.5,
+              marginTop: headerHeight * 0.25,
+            }}
+          />
+          <div
+            className="Gantt-Table_Header-Item"
+            style={{
+              minWidth: "125px",
+            }}
+          >
+            &nbsp;Progress
+          </div>
         </div>
       </div>
     );
