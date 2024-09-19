@@ -1,8 +1,8 @@
-import * as React from "react";
-import { Task } from "gantt-task-react";
-import { Tag } from "@fluentui/react-tags";
-import { WarningFilled } from "@fluentui/react-icons/lib/icons/chunk-4";
-import { CheckmarkCircle20Filled, CircleHalfFill20Regular, Circle20Regular } from "@fluentui/react-icons";
+import * as React from 'react';
+import { Task } from 'gantt-task-react';
+import { Tag } from '@fluentui/react-tags';
+import { WarningFilled } from '@fluentui/react-icons/lib/icons/chunk-4';
+import { CheckmarkCircle20Filled, CircleHalfFill20Regular, Circle20Regular } from '@fluentui/react-icons';
 
 export const createTaskListLocal = (
     includeTime: boolean,
@@ -39,11 +39,11 @@ export const createTaskListLocal = (
                 }}
             >
                 {tasks.map((t) => {
-                    let expanderSymbol = "";
+                    let expanderSymbol = '';
                     if (t.hideChildren === false) {
-                        expanderSymbol = "▼";
+                        expanderSymbol = '▼';
                     } else if (t.hideChildren === true) {
-                        expanderSymbol = "▶";
+                        expanderSymbol = '▶';
                     }
                     return (
                         <div
@@ -52,7 +52,7 @@ export const createTaskListLocal = (
                             key={`${t.id}row`}
                             onClick={() => {
                                 if (selectedTaskId === t.id) {
-                                    setSelectedTask("");
+                                    setSelectedTask('');
                                 } else {
                                     setSelectedTask(t.id);
                                 }
@@ -62,8 +62,8 @@ export const createTaskListLocal = (
                                 <div
                                     className={
                                         selectedTaskId === t.id
-                                            ? "Gantt-Task-List-Checkbox__Checked"
-                                            : "Gantt-Task-List-Checkbox"
+                                            ? 'Gantt-Task-List-Checkbox__Checked'
+                                            : 'Gantt-Task-List-Checkbox'
                                     }
                                 ></div>
                             </div>
@@ -82,8 +82,8 @@ export const createTaskListLocal = (
                                     <div
                                         className={
                                             expanderSymbol
-                                                ? "Gantt-Task-List_Cell__Expander"
-                                                : "Gantt-Task-List_Cell__Empty-Expander"
+                                                ? 'Gantt-Task-List_Cell__Expander'
+                                                : 'Gantt-Task-List_Cell__Empty-Expander'
                                         }
                                         onClick={(e) => {
                                             onExpanderClick(t);
@@ -92,10 +92,7 @@ export const createTaskListLocal = (
                                     >
                                         {expanderSymbol}
                                     </div>
-                                    <div
-                                        className="Gantt-Task-List_Cell__Link"
-                                        onClick={() => onClick(t)}
-                                    >
+                                    <div className="Gantt-Task-List_Cell__Link" onClick={() => onClick(t)}>
                                         {t.name}
                                     </div>
                                 </div>
@@ -111,26 +108,20 @@ export const createTaskListLocal = (
                                 }}
                                 title={formatDateShort(t.start, includeTime)}
                             >
-                                {t.errorFlag &&
-                                (t.errorFlag === 717170002 ||
-                                    t.errorFlag === 717170003) ? (
+                                {t.errorFlag && (t.errorFlag === 717170002 || t.errorFlag === 717170003) ? (
                                     <Tag
                                         style={{
-                                            backgroundColor: "#E81123",
-                                            color: "white",
+                                            backgroundColor: '#E81123',
+                                            color: 'white',
                                         }}
-                                        icon={
-                                            <WarningFilled
-                                                style={{ color: "white" }}
-                                            />
-                                        }
+                                        icon={<WarningFilled style={{ color: 'white' }} />}
                                     >
-                                        {formatDateShort(t.end, includeTime)}
+                                        {formatDateShort(t.start, includeTime)}
                                     </Tag>
                                 ) : (
                                     <>
                                         &nbsp;
-                                        {formatDateShort(t.end, includeTime)}
+                                        {formatDateShort(t.start, includeTime)}
                                     </>
                                 )}
                             </div>
@@ -145,19 +136,13 @@ export const createTaskListLocal = (
                                 }}
                                 title={formatDateShort(t.end, includeTime)}
                             >
-                                {t.errorFlag &&
-                                (t.errorFlag === 717170001 ||
-                                    t.errorFlag === 717170003) ? (
+                                {t.errorFlag && (t.errorFlag === 717170001 || t.errorFlag === 717170003) ? (
                                     <Tag
                                         style={{
-                                            backgroundColor: "#E81123",
-                                            color: "white",
+                                            backgroundColor: '#E81123',
+                                            color: 'white',
                                         }}
-                                        icon={
-                                            <WarningFilled
-                                                style={{ color: "white" }}
-                                            />
-                                        }
+                                        icon={<WarningFilled style={{ color: 'white' }} />}
                                     >
                                         {formatDateShort(t.end, includeTime)}
                                     </Tag>
@@ -172,20 +157,30 @@ export const createTaskListLocal = (
                             <div
                                 className="Gantt-Task-List_Cell"
                                 style={{
-                                    minWidth: "125px",
-                                    maxWidth: "125px",
+                                    minWidth: '125px',
+                                    maxWidth: '125px',
                                 }}
-                                title={t.statusOption === 717170000
-                                    ? "Not Started"
-                                    : t.statusOption === 717170001
-                                    ? "In Progress"
-                                    : "Done"}
+                                title={
+                                    t.statusOption === 717170000
+                                        ? 'Not Started'
+                                        : t.statusOption === 717170001
+                                        ? 'In Progress'
+                                        : 'Done'
+                                }
                             >
-                                {t.statusOption === 717170000
-                                    ? <><Circle20Regular color="#0f6cbd"/> <span>&nbsp;Not Started</span></>
-                                    : t.statusOption === 717170001
-                                    ? <><CircleHalfFill20Regular color="#0f6cbd" /> <span>&nbsp;In Progress</span></>
-                                    : <><CheckmarkCircle20Filled color="#0f6cbd" /> <span>&nbsp;Done</span></>}
+                                {t.statusOption === 717170000 ? (
+                                    <>
+                                        <Circle20Regular color="#0f6cbd" /> <span>&nbsp;Not Started</span>
+                                    </>
+                                ) : t.statusOption === 717170001 ? (
+                                    <>
+                                        <CircleHalfFill20Regular color="#0f6cbd" /> <span>&nbsp;In Progress</span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <CheckmarkCircle20Filled color="#0f6cbd" /> <span>&nbsp;Done</span>
+                                    </>
+                                )}
                             </div>
                         </div>
                     );
