@@ -30,6 +30,9 @@ export const createTaskListLocal = (
         setSelectedTask,
         onExpanderClick,
     }) => {
+        const rowWidthNumber = Number(rowWidth.slice(0, -2));
+        console.log(rowWidthNumber);
+        const mainRowWidth = (rowWidthNumber * 1.5) + "px"
         return (
             <div
                 className="Gantt-Task-List_Wrapper"
@@ -39,7 +42,7 @@ export const createTaskListLocal = (
                 }}
             >
                 {tasks.map((t) => {
-                    let expanderSymbol = '';
+                    let expanderSymbol = '\t';
                     if (t.hideChildren === false) {
                         expanderSymbol = '▼';
                     } else if (t.hideChildren === true) {
@@ -73,8 +76,8 @@ export const createTaskListLocal = (
                             <div
                                 className="Gantt-Task-List_Cell"
                                 style={{
-                                    minWidth: rowWidth,
-                                    maxWidth: rowWidth,
+                                    minWidth: mainRowWidth,
+                                    maxWidth: mainRowWidth,
                                 }}
                                 title={t.name}
                             >

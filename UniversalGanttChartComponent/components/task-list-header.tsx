@@ -11,6 +11,9 @@ export const createHeaderLocal = (
   fontSize: string;
 }> => {
   return ({ headerHeight, fontFamily, fontSize, rowWidth }) => {
+    const rowWidthNumber = Number(rowWidth.slice(0, -2));
+    console.log(rowWidthNumber);
+    const mainRowWidth = (rowWidthNumber * 1.5) + "px"
     return (
       <div
         className="Gantt-Table"
@@ -36,7 +39,7 @@ export const createHeaderLocal = (
           <div
             className="Gantt-Table_Header-Item"
             style={{
-              minWidth: rowWidth,
+              minWidth: mainRowWidth,
             }}
           >
             &nbsp;{recordDisplayName}
